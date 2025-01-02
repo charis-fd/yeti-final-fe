@@ -26,34 +26,30 @@ const MaintenanceLogComponent = () => {
   return (
     <div>
       <h2 className="text-2xl font-bold mb-4">Maintenance Logs</h2>
-      {logs.length === 0 ? (
-        <p>No logs found.</p>
-      ) : (
-        <table className="w-full border-collapse">
-          <thead className="bg-gray-200">
-            <tr>
-              <th className="border p-2">ID</th>
-              <th className="border p-2">Document ID</th>
-              <th className="border p-2">Date</th>
-              <th className="border p-2">Odometer</th>
-              <th className="border p-2">Distance</th>
-              <th className="border p-2">Oil</th>
+      <table className="w-full border-collapse">
+        <thead className="bg-gray-200">
+          <tr>
+            <th className="border p-2">ID</th>
+            <th className="border p-2">Document ID</th>
+            <th className="border p-2">Date</th>
+            <th className="border p-2">Odometer</th>
+            <th className="border p-2">Distance</th>
+            <th className="border p-2">Oil</th>
+          </tr>
+        </thead>
+        <tbody>
+          {logs.map((log) => (
+            <tr key={log.id} className="hover:bg-gray-100">
+              <td className="border p-2">{log.id}</td>
+              <td className="border p-2">{log.attributes.documentId}</td>
+              <td className="border p-2">{log.attributes.date}</td>
+              <td className="border p-2">{log.attributes.odometer}</td>
+              <td className="border p-2">{log.attributes.distance}</td>
+              <td className="border p-2">{log.attributes.oil}</td>
             </tr>
-          </thead>
-          <tbody>
-            {logs.map((log) => (
-              <tr key={log.id} className="hover:bg-gray-100">
-                <td className="border p-2">{log.id}</td>
-                <td className="border p-2">{log.attributes.documentId}</td>
-                <td className="border p-2">{log.attributes.date}</td>
-                <td className="border p-2">{log.attributes.odometer}</td>
-                <td className="border p-2">{log.attributes.distance}</td>
-                <td className="border p-2">{log.attributes.oil}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
