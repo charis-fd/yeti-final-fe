@@ -30,38 +30,30 @@ const MaintenanceLogComponent = () => {
       {logs.length === 0 ? (
         <p>No maintenance logs found.</p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse border">
-            <thead className="bg-gray-200">
-              <tr>
-                <th className="border p-2">ID</th>
-                <th className="border p-2">Document ID</th>
-                <th className="border p-2">Date</th>
-                <th className="border p-2">Odometer</th>
-                <th className="border p-2">Distance</th>
-                <th className="border p-2">Oil</th>
-                <th className="border p-2">Created At</th>
-                <th className="border p-2">Updated At</th>
-                <th className="border p-2">Published At</th>
+        <table className="w-full border-collapse border">
+          <thead className="bg-gray-200">
+            <tr>
+              <th className="border p-2">ID</th>
+              <th className="border p-2">Document ID</th>
+              <th className="border p-2">Date</th>
+              <th className="border p-2">Odometer</th>
+              <th className="border p-2">Distance</th>
+              <th className="border p-2">Oil</th>
+            </tr>
+          </thead>
+          <tbody>
+            {logs.map((log) => (
+              <tr key={log.id} className="hover:bg-gray-100">
+                <td className="border p-2">{log.id}</td>
+                <td className="border p-2">{log.attributes.documentId}</td>
+                <td className="border p-2">{log.attributes.date}</td>
+                <td className="border p-2">{log.attributes.odometer}</td>
+                <td className="border p-2">{log.attributes.distance}</td>
+                <td className="border p-2">{log.attributes.oil}</td>
               </tr>
-            </thead>
-            <tbody>
-              {logs.map((log) => (
-                <tr key={log.id} className="hover:bg-gray-100">
-                  <td className="border p-2">{log.id}</td>
-                  <td className="border p-2">{log.attributes.documentId}</td>
-                  <td className="border p-2">{log.attributes.date}</td>
-                  <td className="border p-2">{log.attributes.odometer}</td>
-                  <td className="border p-2">{log.attributes.distance}</td>
-                  <td className="border p-2">{log.attributes.oil}</td>
-                  <td className="border p-2">{new Date(log.attributes.createdAt).toLocaleString()}</td>
-                  <td className="border p-2">{new Date(log.attributes.updatedAt).toLocaleString()}</td>
-                  <td className="border p-2">{new Date(log.attributes.publishedAt).toLocaleString()}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       )}
     </div>
   );
