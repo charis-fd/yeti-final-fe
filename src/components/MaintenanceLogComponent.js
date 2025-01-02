@@ -28,7 +28,7 @@ const MaintenanceLogComponent = () => {
     <div>
       <h2 className="text-2xl font-bold mb-4">Maintenance Logs</h2>
       {logs.length === 0 ? (
-        <p>No maintenance logs found.</p>
+        <p>No maintenance logs found.,,</p>
       ) : (
         <table className="w-full border-collapse border">
           <thead className="bg-gray-200">
