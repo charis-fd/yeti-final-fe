@@ -6,19 +6,18 @@ const MaintenanceLogComponent = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchMaintenanceLogs = async () => {
+    const fetchLogs = async () => {
       try {
-        const response = await fetch('https://yeti-final-app.onrender.com/api/oils?populate*');
-        const { data } = await response.json();
+        const res = await fetch('https://yeti-final-app.onrender.com/api/oils?populate*');
+        const { data } = await res.json();
         setLogs(data);
         setLoading(false);
       } catch (err) {
-        setError('Failed to fetch maintenance logs');
+        setError('Failed to fetch logs');
         setLoading(false);
-        console.error(err);
       }
     };
-    fetchMaintenanceLogs();
+    fetchLogs();
   }, []);
 
   if (loading) return <div>Loading...</div>;
