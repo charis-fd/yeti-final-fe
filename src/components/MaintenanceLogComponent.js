@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-// Replace with your actual Strapi backend URL
-const API_URL = process.env.REACT_APP_STRAPI_API_URL || 'https://yeti-final-app.onrender.com/api/oils?populate*';
-
 const MaintenanceLogComponent = () => {
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -11,23 +8,14 @@ const MaintenanceLogComponent = () => {
   useEffect(() => {
     const fetchMaintenanceLogs = async () => {
       try {
-        const response = await fetch(API_URL, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-            // Add any additional headers like authorization if needed
-            // 'Authorization': `Bearer ${your_token}`
-          }
-        });
+        const response = await fetch('https://yeti-final-app.onrender.com/api/oils?populate*');
 
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
 
-        const jsonData = await response.json();
-        
-        // Set the logs state with the data from the "data" property
-        setLogs(jsonData.data);
+        const { data } = await response.json();
+        setLogs(data);
         setLoading(false);
       } catch (err) {
         setError('Failed to fetch maintenance logs');
