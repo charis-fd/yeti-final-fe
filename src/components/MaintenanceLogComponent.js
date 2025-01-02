@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 // Replace with your actual Strapi backend URL
-const API_URL = process.env.REACT_APP_STRAPI_API_URL || 'https://yeti-final-app.onrender.com/api/oils';
+const API_URL = process.env.REACT_APP_STRAPI_API_URL || 'https://yeti-final-app.onrender.com/api/oils?populate*';
 
 const MaintenanceLogComponent = () => {
   const [logs, setLogs] = useState([]);
@@ -26,7 +26,7 @@ const MaintenanceLogComponent = () => {
 
         const jsonData = await response.json();
         
-        // Strapi typically returns data in this structure
+        // Set the logs state with the data from the "data" property
         setLogs(jsonData.data);
         setLoading(false);
       } catch (err) {
