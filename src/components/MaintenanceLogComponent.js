@@ -58,6 +58,8 @@ const MaintenanceLogComponent = () => {
                 <th className="border p-2">Distance</th>
                 <th className="border p-2">Oil</th>
                 <th className="border p-2">Created At</th>
+                <th className="border p-2">Updated At</th>
+                <th className="border p-2">Published At</th>
               </tr>
             </thead>
             <tbody>
@@ -69,6 +71,8 @@ const MaintenanceLogComponent = () => {
                   <td className="border p-2">{log.attributes.distance}</td>
                   <td className="border p-2">{log.attributes.oil}</td>
                   <td className="border p-2">{new Date(log.attributes.createdAt).toLocaleString()}</td>
+                  <td className="border p-2">{new Date(log.attributes.updatedAt).toLocaleString()}</td>
+                  <td className="border p-2">{new Date(log.attributes.publishedAt).toLocaleString()}</td>
                 </tr>
               ))}
             </tbody>
