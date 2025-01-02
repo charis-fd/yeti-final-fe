@@ -8,7 +8,7 @@ const MaintenanceLogComponent = () => {
   useEffect(() => {
     const fetchLogs = async () => {
       try {
-        const response = await fetch('https://yeti-final-app.onrender.com/api/oils?populate*');
+        const response = await fetch('https://yeti-final-app.onrender.com/api/oils?populate=*');
         const { data } = await response.json();
         setLogs(data);
         setLoading(false);
@@ -21,14 +21,14 @@ const MaintenanceLogComponent = () => {
     fetchLogs();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div className="text-red-500">{error}</div>;
+  if (loading) return <div className="p-4">Loading...</div>;
+  if (error) return <div className="p-4 text-red-500">{error}</div>;
 
   return (
-    <div>
+    <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Maintenance Logs</h2>
       {logs.length === 0 ? (
-        <p>No maintenance logs found.,,</p>
+        <p>No maintenance logs found.</p>
       ) : (
         <table className="w-full border-collapse border">
           <thead className="bg-gray-200">
